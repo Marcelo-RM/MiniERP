@@ -27,7 +27,13 @@ namespace MiniERP.API.Controllers
         {
             CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
 
-            user.Username = request.Username;
+            user.UsuarioID = 1; //TODO: Inserir de forma incremental.
+            user.CompleteName = request.CompleteName;
+            user.Username = request.UserName;
+            user.PhoneNumber = request.PhoneNumber;
+            user.Email = request.Email;
+            user.CPF = request.CPF;
+
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
 
@@ -36,7 +42,7 @@ namespace MiniERP.API.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<string>> Login(UserDto request)
+        public async Task<ActionResult<string>> Login(LoginDto request)
         {
             if (user.Username != request.Username)
             {
