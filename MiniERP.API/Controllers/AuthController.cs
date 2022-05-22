@@ -28,6 +28,7 @@ namespace MiniERP.API.Controllers
             user.PhoneNumber = request.PhoneNumber;
             user.Email = request.Email;
             user.CPF = request.CPF;
+            user.Role = request.Role;
 
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
